@@ -1,0 +1,25 @@
+/* Define your theme modifications inside next mixin */
+@mixin com_company_demo-halo-ext {
+  .charts-demo-container {
+    padding-top: 150px;
+    font-size: 0;
+  }
+
+  .top-chart {
+    margin-top: -150px;
+    width: 50% !important;
+    height: 150px !important;
+  }
+
+  .charts-demo-container {
+    @include width-range($max: 800px) {
+      padding-top: 0;
+      overflow-y: auto;
+
+      .top-chart {
+        margin-top: 0;
+        width: 100% !important;
+      }
+    }
+  }
+}

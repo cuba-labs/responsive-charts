@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="com.company.demo.web.screens.ExtAppMainWindow"
+        extends="/com/haulmont/cuba/web/app/mainwindow/mainwindow.xml"
+        messagesPack="com.company.demo.web.screens"
+        xmlns:chart="http://schemas.haulmont.com/charts/charts.xsd"
+        xmlns:main="http://schemas.haulmont.com/cuba/mainwindow.xsd">
+
+    <dsContext>
+        <collectionDatasource id="usersDs"
+                              class="com.haulmont.cuba.security.entity.User"
+                              view="_local">
+            <query>
+                <![CDATA[select e from sec$User e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+
+    <layout>
+        <split id="foldersSplit">
+            <main:workArea id="workArea">
+                <main:initialLayout>
+                    <cssLayout id="responsiveWrap"
+                               stylename="charts-demo-container"
+                               responsive="true"
+                               width="100%"
+                               height="100%">
+
+                        <chart:serialChart id="lineChart1"
+                                           stylename="top-chart"
+                                           categoryField="date"
+                                           byDate="true"
+                                           mouseWheelZoomEnabled="true"
+                                           theme="LIGHT"
+                                           height="100%"
+                                           width="50%">
+                            <chart:data>
+                                <chart:item>
+                                    <chart:property name="id" value="1" type="string"/>
+                                    <chart:property name="value" value="20" type="int"/>
+                                    <chart:property name="date" value="2016-01-01" type="date"/>
+                                </chart:item>
+                                <chart:item>
+                                    <chart:property name="id" value="2" type="string"/>
+                                    <chart:property name="value" value="23" type="int"/>
+                                    <chart:property name="date" value="2016-01-02" type="date"/>
+                                </chart:item>
+                                <chart:item>
+                                    <chart:property name="id" value="3" type="string"/>
+                                    <chart:property name="value" value="20" type="int"/>
+                                    <chart:property name="date" value="2016-01-03" type="date"/>
+                                </chart:item>
+                                <chart:item>
+                                    <chart:property name="id" value="4" type="string"/>
+                                    <chart:property name="value" value="29" type="int"/>
+                                    <chart:property name="date" value="2016-01-04" type="date"/>
+                                </chart:item>
+                            </chart:data>
+                            <chart:graphs>
+                                <chart:graph id="g1"
+                                             lineThickness="2"
+                                             valueField="value">
+                                </chart:graph>
+                            </chart:graphs>
+                            <chart:categoryAxis dashLength="1"
+                                                minorGridEnabled="true"/>
+                        </chart:serialChart>
+
+                        <chart:serialChart id="lineChart2"
+                                           stylename="top-chart"
+                                           categoryField="date"
+                                           byDate="true"
+                                           mouseWheelZoomEnabled="true"
+                                           theme="LIGHT"
+                                           height="100%"
+                                           width="50%">
+                            <chart:data>
+                                <chart:item>
+                                    <chart:property name="id" value="1" type="string"/>
+                                    <chart:property name="value" value="20" type="int"/>
+                                    <chart:property name="date" value="2016-01-01" type="date"/>
+                                </chart:item>
+                                <chart:item>
+                                    <chart:property name="id" value="2" type="string"/>
+                                    <chart:property name="value" value="23" type="int"/>
+                                    <chart:property name="date" value="2016-01-02" type="date"/>
+                                </chart:item>
+                                <chart:item>
+                                    <chart:property name="id" value="3" type="string"/>
+                                    <chart:property name="value" value="20" type="int"/>
+                                    <chart:property name="date" value="2016-01-03" type="date"/>
+                                </chart:item>
+                                <chart:item>
+                                    <chart:property name="id" value="4" type="string"/>
+                                    <chart:property name="value" value="29" type="int"/>
+                                    <chart:property name="date" value="2016-01-04" type="date"/>
+                                </chart:item>
+                            </chart:data>
+                            <chart:graphs>
+                                <chart:graph id="g2"
+                                             lineThickness="2"
+                                             valueField="value">
+                                </chart:graph>
+                            </chart:graphs>
+                            <chart:categoryAxis dashLength="1"
+                                                minorGridEnabled="true"/>
+                        </chart:serialChart>
+
+                        <table height="100%"
+                               stylename="bottom-table"
+                               width="100%">
+                            <columns>
+                                <column id="login"/>
+                                <column id="firstName"/>
+                                <column id="lastName"/>
+                                <column id="active"/>
+                            </columns>
+                            <rows datasource="usersDs"/>
+                        </table>
+                    </cssLayout>
+                </main:initialLayout>
+            </main:workArea>
+        </split>
+    </layout>
+</window>
